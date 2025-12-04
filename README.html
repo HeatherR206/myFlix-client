@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-        <html>
+        <html lang="en">
         <head>
             <meta charset="UTF-8">
             <title>&ast;&ast;myFlix Client &lpar;using React&rpar;&ast;&ast;</title>
@@ -140,7 +140,9 @@
         <body class="vscode-body vscode-light">
             <h1 id="myflix-client-using-react"><strong>myFlix Client (using React)</strong></h1>
 <p>This is a full-stack movie application designed to showcase a comprehensive <strong>RESTful API</strong> architecture alongside a modern client-side experience. The server is built using <strong>Node.js</strong> with <strong>Express</strong> and interacts with a <strong>MongoDB Atlas</strong> database to handle user authentication, movie data storage, and retrieval.</p>
-<h2 id="the-client-side-is-a-single-page-application-spa-currently-under-development-built-with-react-and-managed-using-yarn-parcel-is-utilized-as-the-blazing-fast-zero-configuration-web-application-bundler-for-development-and-production-builds-this-project-emphasizes-a-clear-separation-between-a-robust-api-and-a-dynamic-component-based-frontend">The client-side is a <strong>Single Page Application (SPA)</strong> currently under development, built with <strong>React</strong> and managed using <strong>Yarn</strong>. <strong>Parcel</strong> is utilized as the blazing-fast, zero-configuration web application bundler for development and production builds. This project emphasizes a clear separation between a robust API and a dynamic, component-based frontend.</h2>
+<p>The client-side is a <strong>Single Page Application (SPA)</strong> currently under development, built with <strong>React</strong> and managed using <strong>Yarn</strong>. <strong>Parcel</strong> is utilized as the blazing-fast, zero-configuration web application bundler for development and production builds. This project emphasizes a clear separation between a robust API and a dynamic, component-based frontend.</p>
+<br>
+<hr>  
 <h2 id="tech-stack"><strong>Tech Stack</strong></h2>
 <h3 id="server--database-completed"><strong>Server &amp; Database (Completed)</strong></h3>
 <ul>
@@ -148,72 +150,92 @@
 <li><strong>Server Framework:</strong> Express</li>
 <li><strong>Database:</strong> MongoDB Atlas</li>
 <li><strong>API Host:</strong> Heroku</li>
-<li><strong>Authentication:</strong> bcrypt, passport, JSONWebTokens</li>
+<li><strong>Authentication/Data Security:</strong> bcrypt, passport, JSON Web Tokens (JWT), CORS, express-validator, environment variables</li>
 </ul>
-<h3 id="client-under-development"><strong>Client</strong> (Under Development)**</h3>
+<h3 id="client-under-development"><strong>Client (Under Development)</strong></h3>
 <ul>
 <li><strong>Frontend Library:</strong> React (component-based UI)</li>
 <li><strong>Language:</strong> JavaScript (ES6+)</li>
 <li><strong>Build Tool/Bundler:</strong> Parcel (zero-config build tool)</li>
 <li><strong>Package Manager:</strong> Yarn (installs dependencies consistently)</li>
 </ul>
-<h2 id="installation"><strong>Installation</strong></h2>
+<br>
+<hr>
+<h2 id="getting-started"><strong>Getting Started</strong></h2>
 <h3 id="prerequisites"><strong>Prerequisites</strong></h3>
-<p>You will need to install the following software on your machine:</p>
+<p>You will need to globally install the following software on your machine:</p>
 <ul>
-<li><strong>Node.js</strong></li>
-<li><strong>Yarn</strong></li>
+<li><strong>Node.js</strong> (LTS recommended)</li>
+<li><strong>Yarn</strong> (or preferred package manager)</li>
 <li><strong>MongoDB Community Server</strong> (or preferred database software)</li>
 </ul>
+<br>
+<h3 id="installation"><strong>Installation</strong></h3>
 <ol>
-<li><strong>Clone the repository</strong></li>
-</ol>
-<pre><code>Bash
-</code></pre>
-<pre><code>git clone https://github.com/HeatherR206/myFlix.git
+<li><strong>Clone the repository</strong><pre class="language-md">git clone at https://github.com/HeatherR206/myFlix-client.git
 cd myFlix
-</code></pre>
+</pre>
+</li>
+</ol>
+<br>
 <ol start="2">
-<li><strong>Install Server Dependencies</strong></li>
+<li><strong>Install Server Dependencies</strong><pre class="language-md">cd server
+yarn install
+</pre>
+</li>
 </ol>
-<pre><code>Bash
-</code></pre>
-<pre><code>cd server
-yarn add
-</code></pre>
+<br>
 <ol start="3">
-<li><strong>Install Client Dependencies</strong></li>
+<li><strong>Install Client Dependencies</strong><pre class="language-md">cd ../client
+yarn install
+</pre>
+</li>
 </ol>
-<pre><code>cd 
-yarn add
-</code></pre>
-<ol start="4">
-<li></li>
+<br>
+<h3 id="configuration"><strong>Configuration</strong></h3>
+<ol>
+<li>
+<p><strong>Server Setup</strong></p>
+<ul>
+<li>Create a file named &quot;.env&quot; inside the /server directory</li>
+<li>Add your environment variables (e.g. database connection string, JWT secret key)</li>
+</ul>
+<p><strong>Code snippet example</strong></p>
+<pre class="language-md">MONGODB_URI=mongodb://localhost:27017/myFlixDB
+jwtSecret=your_jwt_secret
+port=8080
+</pre>
+</li>
 </ol>
-<h2 id="deployment"><strong>Deployment</strong></h2>
+<br>
+<h3 id="deployment"><strong>Deployment</strong></h3>
 <p>These steps will set you up to run the project locally.</p>
 <ol>
-<li><strong>Start the Database</strong></li>
-</ol>
+<li><strong>Start the Database</strong>
 <ul>
 <li>Make sure your <strong>database</strong> server (e.g. MongoDB Atlas) is running</li>
 </ul>
-<ol start="2">
-<li><strong>Start your Server/API</strong></li>
+</li>
 </ol>
-<pre><code>Bash
-</code></pre>
-<pre><code># In your Heroku server directory
+<br>
+<ol>
+<li><strong>Start your Server/API</strong><pre class="language-md">// In the /server directory
 yarn start
-# The server will run on http://localhost:8080 (or your configured port)
-</code></pre>
-<ul>
-<li>git clone at <a href="https://github.com/HeatherR206/myFlix-client.git">https://github.com/HeatherR206/myFlix-client.git</a></li>
-<li>cd parcel src/index.html</li>
-<li>The default myFlix API URL is <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li>The live URL (development stage) is</li>
-</ul>
-<h3 id="contact"><strong>Contact</strong></h3>
+// The server will run on http://localhost:8080 (or your configured port)
+</pre>
+</li>
+</ol>
+<br>
+<ol start="3">
+<li><strong>Start the Client/Frontend</strong><pre class="language-md">// In the /client directory
+yarn start
+// The app will open your browser, likely at http://localhost:1234
+</pre>
+</li>
+</ol>
+<br>
+<hr>
+<h2 id="contact"><strong>Contact</strong></h2>
 <p><strong>Author:</strong> Heather Ricarte<br>
 <strong>Email:</strong> <a href="mailto:ricarte.heather@gmail.com">ricarte.heather@gmail.com</a></p>
 
