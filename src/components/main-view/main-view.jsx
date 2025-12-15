@@ -15,6 +15,7 @@ export const MainView = () => {
                 return {
                     id: doc._id,
                     title: doc.title,
+                    image: doc.image_path,
                     summary: doc.summary,
                     director: doc.directors.map(director => director.director_name),
                     genre: doc.genres.map(genre => genre.genre_name)
