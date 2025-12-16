@@ -33,7 +33,10 @@ export const MainView = () => {
                     setUser(user);
                     setToken(token);
                 }} />
-                or
+                <br />
+                <p><span><strong>or  Register  below</strong></span></p>
+                <br />
+                <br />
                 <SignupView />
             </>
         );
