@@ -7,7 +7,7 @@ import "./index.scss";
 const MyFlixApplication = () => {
     return (
         <Container>
-            <MainView apiUrl={API_URL} />
+            <MainView />
         </Container>
     );
 };
