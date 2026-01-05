@@ -1,8 +1,16 @@
 import PropTypes from "prop-types";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { Card, Col, Row } from "react-bootstrap";
 import "./movie-view.scss";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+    const { movieId } = useParams();
+
+    const movie = movies.find((m) => m._id === movieId);
+
+    if (!movie) return <div>Movie not found in database</div>;
+
     return (
         <Row className="justify-content-center">
             <Col xs={12} md={10} lg={8}>
@@ -43,14 +51,14 @@ export const MovieView = ({ movie, onBackClick }) => {
                         </div>
                         <br />
 
-                        <Button
-                            variant="primary"
-                            onClick={onBackClick}   
-                            className="back-button w-100"
-                            style={{ cursor: "pointer "}}
-                        >
-                            Back to Movie List
-                        </Button>
+                        <Link to={`/`}>
+                            <button 
+                                variant="primary"   
+                                className="back-button w-100"
+                                style={{ cursor: "pointer "}}>
+                                Back to Movies List
+                            </button>
+                        </Link>
                     </Card.Body>
                 </Card>
             </Col>
@@ -70,5 +78,4 @@ MovieView.propTypes = {
             genreName: PropTypes.string.isRequired
         })).isRequired
     }).isRequired,    
-    onBackClick: PropTypes.func.isRequired,
 };
