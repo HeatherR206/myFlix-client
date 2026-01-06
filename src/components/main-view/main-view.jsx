@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { NavBar } from "../nav-bar/nav-bar";
 import { API_URL } from "../../config";
 
 import { Row, Col } from "react-bootstrap";
@@ -35,6 +36,14 @@ export const MainView = () => {
             
     return (
         <BrowserRouter>
+            <NavBar
+                user={user}
+                onLoggedOut={() => {
+                    setUser(null);
+                    setToken(null);
+                    localStorage.clear()
+                }}
+            />
             <Row className="justify-content-md-center">
                 <Routes>
                     <Route
@@ -49,7 +58,6 @@ export const MainView = () => {
                                     </Col>
                                 )}
                             </>
-
                         }
                     />
                     <Route
@@ -60,7 +68,12 @@ export const MainView = () => {
                                     <Navigate to="/" />
                                 ) : (
                                     <Col md={5}>
-                                        <LoginView onLoggedIn={(user) => setUser(user)} />
+                                        <LoginView 
+                                            onLoggedIn={(user, token) => {
+                                                setUser(user);
+                                                setToken(token);
+                                            }}
+                                        />    
                                     </Col>
                                 )}
                             </>
@@ -74,7 +87,7 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : movies.length === 0 ? (
-                                    <Col>The list is empty!</Col>
+                                    <Col>The movie list is empty!</Col>
                                 ) : (
                                     <Col md={8}>
                                         <MovieView movies={movies} />        
@@ -90,7 +103,7 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : movies.length === 0 ? (
-                                    <Col>The list is empty!</Col>
+                                    <Col>The movie list is empty!</Col>
                                 ) : (
                                     <>
                                         {movies.map((movie) => (
